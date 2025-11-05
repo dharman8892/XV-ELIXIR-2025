@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XV ELIXIR POWERED BY Jaquar</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="main-header animate-on-scroll">
+        <div class="header-overlay">
+            <h1><strong>XV ELIXIR</strong> Powered by <b><i>Jaquar</i></b> </h1>
+           
+            <p class="tagline">BEYOND DEGREES: A MEANINGFUL AND SUCCESSFUL LIFE</p>
+        </div>
+    </header>
+
+
+    <!--<section class="message animate-on-scroll">
+        <h2>Dear STUDENTS,</h2> ------------------------- Changed heading 
+        <p>
+            15 years of ,countless ideas — one legacy <strong>ELIXIR</strong> 
+        </p>
+    </section>-->
+
+    <section class="gallery animate-on-scroll">
+        <h2>Photo Gallery</h2>
+        <p class="gallery-subheading">ELIXER MOMENTS, a gallery of smiles — A BUNCH OF IDEAS - and inspiration
+            </p>
+
+        <div class="photo-grid">
+            <img src="photos/photo8.jpg" alt="Moment 1" class="gallery-img" />
+            <img src="photos/photo2.jpeg" alt="Moment 2" class="gallery-img" />
+            <img src="photos/photo3.jpeg" alt="Moment 3" class="gallery-img" />
+            <img src="photos/photo4.jpeg" alt="Moment 4" class="gallery-img" />
+            <img src="photos/photo5.jpeg" alt="Moment 5" class="gallery-img" />
+            <img src="photos/photo6.jpg" alt="Moment 6" class="gallery-img" />
+            <img src="photos/photo7.jpg" alt="Moment 7" class="gallery-img" />
+            <img src="photos/photo9.jpg" alt="Moment 8" class="gallery-img" />
+            <img src="photos/photo10.jpg" alt="Moment 9" class="gallery-img" />
+            <img src="photos/photo11.jpg" alt="Moment 10" class="gallery-img" />
+
+        </div>
+
+        <!-- Lightbox container -->
+        <div id="lightbox" class="lightbox">
+            <span class="close">&times;</span>
+            <img class="lightbox-content" id="lightbox-img" />
+        </div>
+    </section>
+
+    <section class="tribute animate-on-scroll">
+        <h2>🌟 To Our Beloved STUDENTS</h2>
+        <p>
+            <strong>XV ELIXIR</strong> – Beyond Degrees: A Meaningful and Successful Life reminds us that true success goes far beyond academic achievements. 
+            It’s not just about earning a degree, but about growing with purpose, passion, and integrity. 
+            This event inspires students to look within, discover their potential, and create a life that blends knowledge with kindness, ambition with values, and success with meaning.
+
+        </p>
+        <p>
+            
+        <p>
+            Imperial College aims to make education a pathway to excel in life through effective implementation of different thinking and innovation in education. 
+            We strive to build ethical, knowledgeable, and great human beings for our country. <strong>Your TRUSTED IMPERIAL COLLEGE TEAM </strong>. 💙
+        </p>
+    </section>
+
+    <section class="event-details animate-on-scroll">
+        <h2>Event Details</h2>
+        <p><strong>Date:</strong> NOVEMBER 8th & 9th, 2025 (Saturday and Sunday)</p>
+        <p><strong>Time:</strong> 08:00 AM onwards</p>
+        <p><strong>Venue:</strong>CHANAKYA AUDITORIUM </p>
+     
+    </section>
+
+
+    <section class="see-you animate-on-scroll">
+        <h2>See You There!</h2>
+        <p>
+            Get ready to relive the best moments, share some laughs, and make new memories
+            one last time. We can't wait to celebrate with you at ELIXER 2025!
+        </p>
+    </section>
+
+    <section class="surprise animate-on-scroll">
+        <h2>🎁 A Little Surprise!</h2>
+        <p>Click below to unveil a special message just for you 🎥</p>
+        <button id="surpriseBtn" class="surprise-btn">Surprise Me</button>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-container">
+            <span class="video-close">&times;</span>
+            <video id="surpriseVideo" controls>
+                <source src="surprise.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <section class="animate-on-scroll invitation">
+        <img src="photos/INVITATION.jpg" alt="">
+        <p class="invitation-text">You are cordially invited XV ELIXIR</p>
+    </section>
+
+    <footer>
+        <p>© XV ELIXIR | POWERED BY JAQUAR</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
+
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".close");
+        const galleryImages = document.querySelectorAll(".gallery-img");
+
+        galleryImages.forEach(img => {
+            img.addEventListener("click", () => {
+                lightbox.style.display = "flex";
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = "none";
+        });
+
+        // Optional: close on background click
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+
+
+        const surpriseBtn = document.getElementById("surpriseBtn");
+        const videoModal = document.getElementById("videoModal");
+        const videoClose = document.querySelector(".video-close");
+        const surpriseVideo = document.getElementById("surpriseVideo");
+
+        surpriseBtn.addEventListener("click", () => {
+            videoModal.style.display = "flex";
+            surpriseVideo.play();
+        });
+
+        videoClose.addEventListener("click", () => {
+            videoModal.style.display = "none";
+            surpriseVideo.pause();
+            surpriseVideo.currentTime = 0;
+        });
+
+        // Optional: Close modal if clicked outside video
+        videoModal.addEventListener("click", (e) => {
+            if (e.target === videoModal) {
+                videoModal.style.display = "none";
+                surpriseVideo.pause();
+                surpriseVideo.currentTime = 0;
+            }
+        });
+      
+  // Countdown Timer
+const countdownElement = document.getElementById("countdown");
+const eventDate = new Date("November  8th and 9th, 2025 8:45:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if (distance < 0) {
+    countdownElement.innerHTML = "It's Time! 🎉";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownElement.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s`;
+}, 1000);
+
+
+    </script>
+
+</body>
+
+</html>
